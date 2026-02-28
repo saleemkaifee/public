@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Saleem Akram – Author & Pharmacist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --amber: #D4680A;
+    --amber-light: #F2882A;
+    --amber-pale: #FAD9B5;
+    --dark: #0E0B07;
+    --dark-warm: #1A1208;
+    --dark-card: #1F1609;
+    --text: #EDE3D3;
+    --text-muted: #9A8870;
+    --border: rgba(212,104,10,0.18);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--dark);
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 64px;
+    background:linear-gradient(to bottom,rgba(14,11,7,0.98) 0%,transparent 100%);
+    border-bottom:1px solid rgba(212,104,10,0.08);
+    backdrop-filter:blur(2px);
+  }
+
+  .nav-logo{
+    font-family:'Playfair Display',serif;
+    font-size:22px;font-weight:600;
+    letter-spacing:1px;
+    color:var(--text);
+  }
+  .nav-logo span{color:var(--amber-light);}
+
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{
+    font-size:11px;font-weight:500;
+    letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--text-muted);text-decoration:none;
+    transition:color .3s;
+  }
+  .nav-links a:hover{color:var(--amber-light);}
+
+  .nav-cta{
+    font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+    padding:10px 28px;border:1px solid var(--amber);
+    color:var(--amber-light);background:transparent;
+    cursor:pointer;text-decoration:none;
+    transition:all .3s;
+  }
+  .nav-cta:hover{background:var(--amber);color:#fff;}
+
+  /* ─── HERO ─── */
+  .hero{
+    min-height:100vh;
+    display:grid;grid-template-columns:1fr 1fr;
+    align-items:center;
+    padding:0 64px;
+    padding-top:100px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 80% at 60% 40%, rgba(212,104,10,0.12) 0%, transparent 70%);
+    pointer-events:none;
+  }
+
+  /* Decorative grain */
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity:0.4;pointer-events:none;
+  }
+
+  .hero-text{position:relative;z-index:2;padding-right:60px;}
+
+  .hero-label{
+    font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:28px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .hero-label::before{content:'';width:32px;height:1px;background:var(--amber);}
+
+  .hero-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(52px,6vw,86px);
+    font-weight:800;line-height:1.0;
+    letter-spacing:-1px;
+    margin-bottom:28px;
+  }
+
+  .hero-title em{
+    font-style:italic;color:var(--amber-light);
+    display:block;
+  }
+
+  .hero-subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;font-weight:300;
+    line-height:1.65;
+    color:var(--text-muted);
+    max-width:440px;
+    margin-bottom:48px;
+  }
+
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:16px;
+  }
+
+  .btn-primary{
+    background:var(--amber);color:#fff;
+    padding:15px 40px;border:none;cursor:pointer;
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:2.5px;
+    text-transform:uppercase;text-decoration:none;
+    transition:all .3s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--amber-light);}
+
+  .btn-ghost{
+    color:var(--text-muted);
+    font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:color .3s;
+    cursor:pointer;
+  }
+  .btn-ghost:hover{color:var(--text);}
+  .btn-ghost svg{transition:transform .3s;}
+  .btn-ghost:hover svg{transform:translateX(4px);}
+
+  /* Hero books floating */
+  .hero-visual{
+    position:relative;z-index:2;
+    display:flex;align-items:center;justify-content:center;
+    height:600px;
+  }
+
+  .book-float{
+    position:absolute;
+    border-radius:4px;
+    box-shadow:0 40px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+    transition:transform .6s ease;
+  }
+  .book-float:hover{transform:translateY(-8px) scale(1.02)!important;}
+
+  .book-float-1{
+    width:220px;height:320px;
+    top:40px;left:50px;
+    transform:rotate(-4deg);
+    z-index:2;
+    background: linear-gradient(160deg, #2a1a08, #4a2c0a);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+
+  .book-float-2{
+    width:195px;height:280px;
+    bottom:40px;right:30px;
+    transform:rotate(5deg);
+    z-index:3;
+    background: linear-gradient(140deg, #C8520A, #E8780A);
+    display:flex;align-items:flex-end;justify-content:center;
+    overflow:hidden;
+    padding-bottom:28px;
+  }
+
+  .book-spine{
+    position:absolute;left:0;top:0;bottom:0;width:14px;
+    background:rgba(0,0,0,0.3);
+  }
+
+  .book-cover-text{
+    text-align:center;padding:20px;position:relative;z-index:2;
+  }
+  .book-cover-text .btitle{
+    font-family:'Playfair Display',serif;
+    font-size:17px;font-weight:700;line-height:1.2;
+    color:#fff;margin-bottom:8px;
+  }
+  .book-cover-text .bauthor{
+    font-size:9px;font-weight:500;letter-spacing:2px;
+    text-transform:uppercase;color:rgba(255,255,255,0.6);
+  }
+
+  /* Book 1 pill design */
+  .pill-mockup{
+    width:90px;height:120px;
+    background:linear-gradient(135deg, #c87830 0%, #e8a040 50%, #f4c878 100%);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow:inset 0 -8px 16px rgba(0,0,0,0.3), inset 0 4px 8px rgba(255,255,255,0.2);
+    margin-bottom:14px;
+  }
+
+  /* Decorative elements */
+  .hero-decoration{
+    position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+    width:500px;height:500px;
+    background:radial-gradient(circle, rgba(212,104,10,0.08) 0%, transparent 70%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .hero-stats{
+    position:absolute;bottom:60px;left:64px;right:64px;
+    display:flex;gap:60px;
+    border-top:1px solid var(--border);
+    padding-top:32px;
+    z-index:2;
+  }
+
+  .stat-item{}
+  .stat-num{
+    font-family:'Playfair Display',serif;
+    font-size:36px;font-weight:700;
+    color:var(--amber-light);
+    line-height:1;
+  }
+  .stat-label{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--text-muted);margin-top:6px;
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section{padding:120px 64px;}
+
+  .section-label{
+    font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:16px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-label::before{content:'';width:32px;height:1px;background:var(--amber);}
+
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px,4vw,58px);font-weight:800;
+    line-height:1.1;margin-bottom:20px;
+  }
+  .section-title em{font-style:italic;color:var(--amber-light);}
+
+  /* ─── ABOUT ─── */
+  .about{
+    background:var(--dark-warm);
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+  }
+
+  .about-visual{
+    position:relative;
+  }
+
+  .about-photo{
+    width:100%;height:560px;
+    object-fit:cover;border-radius:2px;
+    position:relative;z-index:2;
+  }
+
+  .about-photo-placeholder{
+    width:100%;height:560px;
+    background:linear-gradient(145deg, #1a1208 0%, #2d1f0e 40%, #1a1208 100%);
+    border-radius:2px;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    border:1px solid var(--border);
+    position:relative;overflow:hidden;
+  }
+
+  .about-photo-placeholder::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 30%, rgba(212,104,10,0.15) 0%, transparent 70%);
+  }
+
+  .photo-initials{
+    font-family:'Playfair Display',serif;
+    font-size:80px;font-weight:800;
+    color:var(--amber);opacity:0.3;
+    z-index:1;position:relative;
+  }
+
+  .about-frame{
+    position:absolute;
+    top:24px;left:24px;right:-24px;bottom:-24px;
+    border:1px solid var(--border);
+    border-radius:2px;z-index:1;
+  }
+
+  .about-credential{
+    position:absolute;bottom:40px;left:40px;
+    background:var(--dark);
+    padding:20px 28px;border-left:3px solid var(--amber);
+    z-index:3;
+  }
+  .credential-title{
+    font-family:'Playfair Display',serif;
+    font-size:18px;font-weight:600;
+    margin-bottom:4px;
+  }
+  .credential-sub{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);
+  }
+
+  .about-content .section-title{margin-top:0;}
+
+  .about-body{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;line-height:1.75;
+    color:var(--text-muted);margin-bottom:32px;
+  }
+
+  .about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+  .tag{
+    padding:7px 18px;border:1px solid var(--border);
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--text-muted);
+  }
+
+  /* ─── BOOKS ─── */
+  .books{background:var(--dark);}
+
+  .books-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:32px;margin-top:64px;
+  }
+
+  .book-card{
+    background:var(--dark-card);
+    border:1px solid var(--border);
+    padding:0;overflow:hidden;
+    transition:transform .4s ease, box-shadow .4s;
+    cursor:pointer;
+    position:relative;
+  }
+  .book-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 32px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,104,10,0.2);
+  }
+
+  .book-cover{
+    height:280px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+
+  .book-cover-1{
+    background:linear-gradient(160deg, #1a0c02 0%, #3a1f08 50%, #5a3010 100%);
+  }
+  .book-cover-2{
+    background:linear-gradient(135deg, #C8520A 0%, #E8780A 60%, #F49030 100%);
+  }
+  .book-cover-3{
+    background:linear-gradient(155deg, #0c1a1a 0%, #0e2a2a 100%);
+  }
+
+  .book-cover-overlay{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 30%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  }
+
+  .book-cover-content{
+    text-align:center;padding:24px;position:relative;z-index:2;
+  }
+
+  .bc-pill{
+    width:70px;height:90px;
+    background:linear-gradient(135deg, #c87830, #f4c878);
+    border-radius:50% 50% 50% 50% / 55% 55% 45% 45%;
+    margin:0 auto 16px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .bc-title{
+    font-family:'Playfair Display',serif;
+    font-size:20px;font-weight:700;
+    color:#fff;line-height:1.2;
+    margin-bottom:8px;
+  }
+
+  .bc-title-small{font-size:16px;}
+
+  .bc-divider{
+    width:30px;height:1px;background:rgba(255,255,255,0.3);
+    margin:10px auto;
+  }
+
+  .bc-author{
+    font-size:9px;font-weight:500;letter-spacing:2px;
+    text-transform:uppercase;color:rgba(255,255,255,0.55);
+  }
+
+  .book-info{padding:28px 28px 32px;}
+
+  .book-genre{
+    font-size:9px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:12px;
+  }
+
+  .book-title{
+    font-family:'Playfair Display',serif;
+    font-size:20px;font-weight:700;
+    margin-bottom:12px;line-height:1.3;
+  }
+
+  .book-desc{
+    font-size:13px;line-height:1.7;
+    color:var(--text-muted);margin-bottom:24px;
+  }
+
+  .book-cta{
+    font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--amber-light);text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+
+  .book-badge{
+    position:absolute;top:20px;right:20px;
+    background:var(--amber);
+    color:#fff;
+    font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+    padding:5px 12px;font-weight:600;
+  }
+
+  /* ─── QUOTE ─── */
+  .quote-section{
+    background:var(--amber);
+    padding:80px 64px;
+    display:flex;flex-direction:column;
+    align-items:center;text-align:center;
+  }
+
+  .quote-icon{
+    font-family:'Playfair Display',serif;
+    font-size:120px;line-height:0.5;
+    color:rgba(0,0,0,0.12);
+    margin-bottom:32px;
+  }
+
+  .quote-text{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(22px,3vw,36px);
+    font-weight:400;font-style:italic;
+    line-height:1.5;color:#fff;
+    max-width:800px;margin-bottom:28px;
+  }
+
+  .quote-source{
+    font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:rgba(255,255,255,0.65);
+  }
+
+  /* ─── WHY ─── */
+  .why{
+    background:var(--dark-warm);
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  }
+
+  .why-list{display:grid;gap:32px;margin-top:20px;}
+
+  .why-item{
+    display:flex;gap:24px;align-items:flex-start;
+    padding-bottom:32px;border-bottom:1px solid var(--border);
+  }
+  .why-item:last-child{border-bottom:none;}
+
+  .why-num{
+    font-family:'Playfair Display',serif;
+    font-size:48px;font-weight:800;
+    color:var(--amber);opacity:0.25;
+    line-height:1;flex-shrink:0;width:60px;
+    text-align:right;
+  }
+
+  .why-body h3{
+    font-family:'Playfair Display',serif;
+    font-size:20px;font-weight:600;
+    margin-bottom:8px;
+  }
+  .why-body p{font-size:14px;line-height:1.75;color:var(--text-muted);}
+
+  .why-right{padding-top:60px;}
+
+  .mission-card{
+    background:var(--dark);
+    padding:40px;border:1px solid var(--border);
+    border-left:3px solid var(--amber);
+    margin-bottom:32px;
+  }
+  .mission-card h4{
+    font-family:'Playfair Display',serif;
+    font-size:22px;font-weight:600;margin-bottom:14px;
+  }
+  .mission-card p{font-size:14px;line-height:1.8;color:var(--text-muted);}
+
+  /* ─── NEWSLETTER ─── */
+  .newsletter{
+    padding:100px 64px;
+    background:var(--dark);
+    display:flex;flex-direction:column;
+    align-items:center;text-align:center;
+  }
+
+  .newsletter .section-title{max-width:600px;}
+
+  .newsletter-form{
+    display:flex;gap:0;margin-top:48px;width:100%;max-width:500px;
+  }
+
+  .newsletter-input{
+    flex:1;padding:16px 24px;
+    background:var(--dark-card);
+    border:1px solid var(--border);border-right:none;
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;font-size:13px;
+    outline:none;
+  }
+  .newsletter-input::placeholder{color:var(--text-muted);}
+  .newsletter-input:focus{border-color:var(--amber);}
+
+  .newsletter-btn{
+    background:var(--amber);color:#fff;border:none;
+    padding:16px 32px;cursor:pointer;
+    font-family:'Montserrat',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+    transition:background .3s;white-space:nowrap;
+  }
+  .newsletter-btn:hover{background:var(--amber-light);}
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials{
+    background:var(--dark-warm);padding:120px 64px;
+  }
+
+  .testimonials-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:28px;margin-top:64px;
+  }
+
+  .testimonial-card{
+    background:var(--dark);
+    padding:36px;border:1px solid var(--border);
+    position:relative;
+  }
+
+  .testimonial-card::before{
+    content:'\201C';
+    font-family:'Playfair Display',serif;
+    font-size:80px;line-height:0.6;
+    color:var(--amber);opacity:0.25;
+    position:absolute;top:24px;left:28px;
+  }
+
+  .test-text{
+    font-family:'Cormorant Garamond',serif;
+    font-size:17px;line-height:1.75;
+    color:var(--text-muted);
+    padding-top:32px;margin-bottom:28px;
+  }
+
+  .test-stars{color:var(--amber);letter-spacing:2px;font-size:13px;margin-bottom:16px;}
+
+  .test-author{
+    display:flex;align-items:center;gap:12px;
+    border-top:1px solid var(--border);padding-top:20px;
+  }
+
+  .test-avatar{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--dark-card);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-size:15px;
+    color:var(--amber);flex-shrink:0;
+  }
+
+  .test-name{font-size:13px;font-weight:500;}
+  .test-role{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);}
+
+  /* ─── CONTACT ─── */
+  .contact{
+    background:var(--dark);
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  }
+
+  .contact-info p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;line-height:1.7;color:var(--text-muted);margin-bottom:40px;
+  }
+
+  .contact-detail{
+    display:flex;align-items:flex-start;gap:16px;
+    margin-bottom:24px;
+  }
+
+  .contact-icon{
+    width:40px;height:40px;
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    color:var(--amber);font-size:16px;
+  }
+
+  .contact-detail-text span{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--amber);display:block;margin-bottom:4px;
+  }
+  .contact-detail-text strong{font-size:14px;font-weight:400;}
+
+  .contact-form{display:grid;gap:16px;}
+
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+  .form-field{display:flex;flex-direction:column;gap:6px;}
+  .form-field label{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--text-muted);
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select{
+    background:var(--dark-card);
+    border:1px solid var(--border);
+    padding:14px 18px;color:var(--text);
+    font-family:'Montserrat',sans-serif;font-size:13px;
+    outline:none;resize:vertical;
+    transition:border-color .3s;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus{border-color:var(--amber);}
+  .form-field textarea{min-height:120px;}
+
+  /* ─── FOOTER ─── */
+  footer{
+    background:var(--dark-warm);
+    padding:64px 64px 40px;
+    border-top:1px solid var(--border);
+  }
+
+  .footer-top{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:60px;margin-bottom:48px;
+  }
+
+  .footer-brand .nav-logo{font-size:26px;display:block;margin-bottom:16px;}
+  .footer-brand p{
+    font-size:13px;line-height:1.75;color:var(--text-muted);
+    max-width:280px;
+  }
+
+  .footer-col h5{
+    font-size:10px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--amber);margin-bottom:20px;
+  }
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col ul a{
+    font-size:13px;color:var(--text-muted);text-decoration:none;
+    transition:color .3s;
+  }
+  .footer-col ul a:hover{color:var(--text);}
+
+  .footer-bottom{
+    border-top:1px solid var(--border);
+    padding-top:28px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+
+  .footer-bottom p{font-size:12px;color:var(--text-muted);}
+
+  .social-links{display:flex;gap:12px;}
+  .social-link{
+    width:36px;height:36px;border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-muted);text-decoration:none;font-size:13px;
+    transition:all .3s;
+  }
+  .social-link:hover{border-color:var(--amber);color:var(--amber);}
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  [data-aos]{opacity:0;transform:translateY(24px);transition:all .7s ease;}
+  [data-aos].visible{opacity:1;transform:none;}
+  [data-aos="fade-right"]{transform:translateX(-24px);}
+  [data-aos="fade-right"].visible{transform:none;}
+  [data-aos="fade-left"]{transform:translateX(24px);}
+  [data-aos="fade-left"].visible{transform:none;}
+
+  /* Stagger delays */
+  [data-delay="1"]{transition-delay:.1s;}
+  [data-delay="2"]{transition-delay:.2s;}
+  [data-delay="3"]{transition-delay:.3s;}
+  [data-delay="4"]{transition-delay:.4s;}
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:900px){
+    nav{padding:20px 24px;}
+    .nav-links{display:none;}
+    section{padding:80px 24px;}
+    .hero,.about,.why,.contact{grid-template-columns:1fr;padding:80px 24px;}
+    .hero{padding-top:120px;}
+    .hero-text{padding-right:0;}
+    .hero-visual{height:420px;margin-top:40px;}
+    .books-grid,.testimonials-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .hero-stats{position:relative;bottom:auto;left:auto;right:auto;flex-wrap:wrap;margin-top:48px;}
+    .form-row{grid-template-columns:1fr;}
+    .quote-section,.newsletter{padding:60px 24px;}
+    footer{padding:48px 24px 32px;}
+    .footer-bottom{flex-direction:column;gap:16px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Dr. Saleem <span>Akram</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#why">Mission</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#books" class="nav-cta">Get the Books</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text" data-aos>
+    <div class="hero-label">Author & Clinical Pharmacist</div>
+    <h1 class="hero-title">
+      Bridging Medicine<br/>
+      <em>& the Public</em>
+    </h1>
+    <p class="hero-subtitle">
+      Dr. Saleem Akram, Pharm-D, writes books that translate complex medical science into clear, actionable knowledge for everyone.
+    </p>
+    <div class="hero-cta">
+      <a href="#books" class="btn-primary">Explore Books</a>
+      <a href="#about" class="btn-ghost">
+        Learn More
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual" data-aos="fade-left">
+    <div class="book-float book-float-1">
+      <div class="book-spine"></div>
+      <div class="book-cover-text">
+        <div class="pill-mockup"></div>
+        <div class="btitle">The Logic<br/>of Healing</div>
+        <div style="width:24px;height:1px;background:rgba(255,255,255,0.25);margin:8px auto;"></div>
+        <div class="bauthor">Dr. Saleem Akram<br/>Pharm-D</div>
+      </div>
+    </div>
+
+    <div class="book-float book-float-2">
+      <div class="book-spine"></div>
+      <div class="book-cover-text" style="padding-top:28px;">
+        <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.55);margin-bottom:10px;">THE LINE BETWEEN</div>
+        <div class="btitle" style="font-size:28px;line-height:1;">HELP</div>
+        <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.55);margin:6px 0;">AND</div>
+        <div class="btitle" style="font-size:32px;">HARM</div>
+        <div style="width:24px;height:1px;background:rgba(255,255,255,0.25);margin:14px auto 10px;"></div>
+        <div class="bauthor">Dr. Saleem Akram<br/>Pharmacist</div>
+      </div>
+    </div>
+
+    <div class="hero-decoration"></div>
+  </div>
+
+  <div class="hero-stats" data-aos>
+    <div class="stat-item">
+      <div class="stat-num">2+</div>
+      <div class="stat-label">Published Books</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Pharm-D</div>
+      <div class="stat-label">Qualification</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Public</div>
+      <div class="stat-label">Health Advocate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Medical</div>
+      <div class="stat-label">Education Author</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual" data-aos="fade-right">
+    <div class="about-photo-placeholder">
+      <div class="photo-initials">SA</div>
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:12px;position:relative;z-index:1;">Your Photo Here</div>
+    </div>
+    <div class="about-frame"></div>
+    <div class="about-credential">
+      <div class="credential-title">Dr. Saleem Akram</div>
+      <div class="credential-sub">Pharm-D · Pharmacist · Author</div>
+    </div>
+  </div>
+
+  <div class="about-content" data-aos>
+    <div class="section-label">About the Author</div>
+    <h2 class="section-title">A Pharmacist Who <em>Speaks</em> Your Language</h2>
+    <p class="about-body">
+      With a Doctor of Pharmacy (Pharm-D) degree and years of clinical practice, Dr. Saleem Akram has dedicated himself to one powerful mission: making medical and pharmaceutical knowledge accessible to every person, not just the professionals.
+    </p>
+    <p class="about-body" style="margin-top:-16px;">
+      His books combine rigorous scientific accuracy with plain, compassionate language — helping readers understand their medications, their bodies, and their healthcare choices with confidence.
+    </p>
+    <div class="about-tags">
+      <span class="tag">Pharmacology</span>
+      <span class="tag">Drug Safety</span>
+      <span class="tag">Health Education</span>
+      <span class="tag">Public Awareness</span>
+      <span class="tag">Clinical Practice</span>
+    </div>
+    <a href="#books" class="btn-primary">View All Books</a>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section class="books" id="books">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;" data-aos>
+    <div>
+      <div class="section-label">Published Works</div>
+      <h2 class="section-title">Books That <em>Empower</em></h2>
+    </div>
+    <a href="#contact" class="btn-ghost" style="margin-bottom:12px;">
+      All Books
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+        <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="books-grid">
+    <!-- Book 1 -->
+    <div class="book-card" data-aos data-delay="1">
+      <div class="book-badge">Bestseller</div>
+      <div class="book-cover book-cover-1">
+        <div class="book-cover-overlay"></div>
+        <div class="book-cover-content">
+          <div class="bc-pill"></div>
+          <div class="bc-title">The Logic of Healing</div>
+          <div class="bc-divider"></div>
+          <div class="bc-author">Dr. Saleem Akram · Pharm-D</div>
+        </div>
+      </div>
+      <div class="book-info">
+        <div class="book-genre">Pharmacology · Health Education</div>
+        <div class="book-title">The Logic of Healing</div>
+        <p class="book-desc">Demystifying the science behind medications and the human body's response to treatment — written for the curious patient and the general reader.</p>
+        <a href="#contact" class="book-cta">Get a Copy →</a>
+      </div>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="book-card" data-aos data-delay="2">
+      <div class="book-cover book-cover-2">
+        <div class="book-cover-overlay"></div>
+        <div class="book-cover-content" style="padding-top:16px;">
+          <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.65);margin-bottom:8px;">THE LINE BETWEEN</div>
+          <div class="bc-title" style="font-size:26px;margin-bottom:0;">HELP</div>
+          <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.65);margin:4px 0;">AND</div>
+          <div class="bc-title" style="font-size:30px;margin-bottom:12px;">HARM</div>
+          <div class="bc-divider"></div>
+          <div class="bc-author">Dr. Saleem Akram · Pharmacist</div>
+        </div>
+      </div>
+      <div class="book-info">
+        <div class="book-genre">Drug Safety · Public Health</div>
+        <div class="book-title">The Line Between Help and Harm</div>
+        <p class="book-desc">Understanding when medications heal and when they hurt — a guide to safe, informed pharmaceutical decision-making for families and patients.</p>
+        <a href="#contact" class="book-cta">Get a Copy →</a>
+      </div>
+    </div>
+
+    <!-- Book 3 – Coming Soon -->
+    <div class="book-card" data-aos data-delay="3">
+      <div class="book-cover book-cover-3">
+        <div class="book-cover-overlay"></div>
+        <div class="book-cover-content">
+          <div style="width:70px;height:90px;border:1px dashed rgba(212,104,10,0.4);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(212,104,10,0.5)" stroke-width="1.5">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+          </div>
+          <div class="bc-title bc-title-small" style="color:rgba(255,255,255,0.4);">Next Book</div>
+          <div class="bc-divider"></div>
+          <div class="bc-author">Coming Soon</div>
+        </div>
+      </div>
+      <div class="book-info">
+        <div class="book-genre">Health Awareness</div>
+        <div class="book-title" style="color:var(--text-muted);">Upcoming Publication</div>
+        <p class="book-desc">Dr. Akram's next work is in progress. Subscribe to the newsletter to be the first to know when the new book launches.</p>
+        <a href="#newsletter" class="book-cta">Get Notified →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BREAK -->
+<div class="quote-section">
+  <div class="quote-icon">"</div>
+  <p class="quote-text">
+    Health literacy is not a luxury — it is a fundamental right. Every person deserves to understand the medicine they take and the body they live in.
+  </p>
+  <div class="quote-source">— Dr. Saleem Akram, Pharm-D</div>
+</div>
+
+<!-- WHY / MISSION -->
+<section class="why" id="why">
+  <div data-aos="fade-right">
+    <div class="section-label">The Mission</div>
+    <h2 class="section-title">Why These <em>Books</em> Matter</h2>
+
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-body">
+          <h3>Closing the Knowledge Gap</h3>
+          <p>Most medical information exists in jargon-heavy texts that patients can't access. Dr. Akram writes to bridge that divide — turning complexity into clarity.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-body">
+          <h3>Empowering Patients</h3>
+          <p>An informed patient is a safer patient. These books give readers the tools to ask better questions, make better choices, and advocate for their own health.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-body">
+          <h3>Scientifically Accurate</h3>
+          <p>Written by a licensed clinical pharmacist with a Pharm-D, every claim is grounded in current pharmaceutical science and medical evidence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-right" data-aos>
+    <div class="mission-card">
+      <h4>Dr. Akram's Philosophy</h4>
+      <p>Medicine should not feel like a foreign language. When patients understand their treatments, outcomes improve — not just medically, but emotionally and practically. Writing is the most scalable form of education I know.</p>
+    </div>
+    <div class="mission-card" style="border-left-color:var(--text-muted);">
+      <h4>Academic Background</h4>
+      <p>Doctor of Pharmacy (Pharm-D) · Licensed Clinical Pharmacist · Specializing in pharmacoeducation and public health communication. Years of patient counseling experience inform every page written.</p>
+    </div>
+    <a href="#contact" class="btn-primary" style="margin-top:8px;">Reach Out</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="section-label" style="justify-content:center;" data-aos>Stay Informed</div>
+  <h2 class="section-title" style="text-align:center;" data-aos>
+    Get Health Insights<br/><em>Delivered to You</em>
+  </h2>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text-muted);max-width:480px;line-height:1.7;text-align:center;" data-aos>
+    Subscribe for new book announcements, health education articles, and pharmaceutical insights from Dr. Saleem Akram.
+  </p>
+  <div class="newsletter-form" data-aos>
+    <input class="newsletter-input" type="email" placeholder="Your email address"/>
+    <button class="newsletter-btn">Subscribe</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div style="text-align:center;" data-aos>
+    <div class="section-label" style="justify-content:center;">Reader Reviews</div>
+    <h2 class="section-title">What Readers <em>Say</em></h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card" data-aos data-delay="1">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"The Logic of Healing changed how I think about every prescription I'm given. Dr. Akram explains pharmacology in a way that finally makes sense to someone with no medical background."</p>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div>
+          <div class="test-name">Ahmed K.</div>
+          <div class="test-role">Patient · Pakistan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card" data-aos data-delay="2">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"As a nurse, I recommend 'The Line Between Help and Harm' to every patient's family. It fills the gap that doctors simply don't have time to fill during appointments."</p>
+      <div class="test-author">
+        <div class="test-avatar">F</div>
+        <div>
+          <div class="test-name">Fatima R.</div>
+          <div class="test-role">Registered Nurse</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card" data-aos data-delay="3">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"Rarely do you find a pharmacist willing to write for the common person with this level of depth and honesty. Dr. Akram's work is a public health gift."</p>
+      <div class="test-author">
+        <div class="test-avatar">M</div>
+        <div>
+          <div class="test-name">Dr. M. Hassan</div>
+          <div class="test-role">General Physician</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info" data-aos="fade-right">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Let's <em>Connect</em></h2>
+    <p>Whether you're a reader with a question, a publisher with an interest, or a media professional seeking an expert voice — Dr. Akram welcomes the conversation.</p>
+
+    <div class="contact-detail">
+      <div class="contact-icon">✉</div>
+      <div class="contact-detail-text">
+        <span>Email</span>
+        <strong>contact@drsaleemakram.com</strong>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">📖</div>
+      <div class="contact-detail-text">
+        <span>Book Orders & Inquiries</span>
+        <strong>Available via Amazon & local bookstores</strong>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-icon">🎙</div>
+      <div class="contact-detail-text">
+        <span>Speaking & Media</span>
+        <strong>Open to talks, podcasts & interviews</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form" data-aos>
+    <div class="form-row">
+      <div class="form-field">
+        <label>First Name</label>
+        <input type="text" placeholder="Your first name"/>
+      </div>
+      <div class="form-field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Your last name"/>
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Email</label>
+      <input type="email" placeholder="your@email.com"/>
+    </div>
+    <div class="form-field">
+      <label>Subject</label>
+      <input type="text" placeholder="How can I help?"/>
+    </div>
+    <div class="form-field">
+      <label>Message</label>
+      <textarea placeholder="Write your message here..."></textarea>
+    </div>
+    <button class="btn-primary" style="border:none;cursor:pointer;">Send Message</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo">Dr. Saleem <span style="color:var(--amber-light);">Akram</span></span>
+      <p>Pharmacist, Author, and Public Health Advocate. Writing to make medicine understandable — one book at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#why">Mission</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Books</h5>
+      <ul>
+        <li><a href="#">The Logic of Healing</a></li>
+        <li><a href="#">The Line Between Help and Harm</a></li>
+        <li><a href="#">Upcoming Works</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Dr. Saleem Akram, Pharm-D. All rights reserved.</p>
+    <div class="social-links">
+      <a class="social-link" href="#">f</a>
+      <a class="social-link" href="#">in</a>
+      <a class="social-link" href="#">@</a>
+      <a class="social-link" href="#">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animation observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
